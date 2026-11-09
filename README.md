@@ -1,3 +1,26 @@
+# TaskFlow AI · Android 智能任务助手
+
+基于 Java、MVVM、Room 和 DeepSeek 的任务管理应用。
+
+- 一句话生成可编辑任务草稿，确认后保存到本地。
+- 日期或任务对象含糊时澄清，默认中文输出。
+- 查询当前筛选任务并生成带任务 ID 的摘要。
+- 保留手动创建、编辑、搜索、状态流转和紧急程度排序。
+- 模型密钥仅放在本机后端进程环境，不嵌入 APK。
+
+## 快速开始
+Android Studio 打开仓库，启动手机模拟器运行 app。终端执行：
+```bash
+./server/start.command
+```
+按提示输入 DeepSeek API Key，保持终端运行。脚本建立 adb reverse 端口转发。
+完整设置、隐私边界和测试说明见 [AI_README.md](AI_README.md)。
+
+## 验证与边界
+已通过 Android 单元测试与构建、12 项后端校验测试。用户已反馈实际模型功能测试通过；未建立模型准确率基准。子任务当前以描述清单保存；摘要引用 ID 校验不等于语义完全正确。后端为仅监听本机的开发服务，公网部署需另行增加鉴权、HTTPS和限流。
+
+<details><summary>原项目说明</summary>
+
 # TaskFlow · Android 企业任务管理
 
 Java 原生 Android 应用，采用 MVVM + Repository + ViewModel + LiveData + Room。按需求实现本地任务管理，不包含账号、服务器或多人实时同步。
@@ -64,3 +87,5 @@ Java 原生 Android 应用，采用 MVVM + Repository + ViewModel + LiveData + R
 ## 技术参考
 
 [Android 官方 Room Java 依赖与注解处理说明](https://developer.android.com/jetpack/androidx/releases/room)。本项目固定使用支持 Java annotationProcessor 的 Room 2.x。
+
+</details>

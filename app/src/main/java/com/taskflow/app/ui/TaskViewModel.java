@@ -17,6 +17,7 @@ public class TaskViewModel extends AndroidViewModel {
   visible.addSource(repository.observeAll(),list->{all=list;refresh();});
   visible.addSource(keyword,q->refresh());visible.addSource(filter,s->refresh());timer.postDelayed(tick,60000);
  }
+ public java.util.List<Task> snapshot(){return new java.util.ArrayList<>(visible.getValue()==null?java.util.Collections.emptyList():visible.getValue());}
  public void refresh(){visible.setValue(TaskRanker.select(all,keyword.getValue(),filter.getValue(),System.currentTimeMillis()));}
  public LiveData<String> errors(){return repository.errors();}
  public void save(Task t){repository.save(t);}
